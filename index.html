@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<head>
+    <title>my incremental third try</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <script type="text/javascript" src="jquery\jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="numeral.js"></script>
+
+</head>
+
+<body>
+<div class="top">
+  <div class="monsterinfo">
+    <span id="previouslevel" onclick="goPreviousLevel()">
+<
+    </span>
+
+    <div id="levelinfo">Level <span id="levels">1</span></div>
+
+    <span id="nextlevel" onclick="goNextLevel()">></span>
+
+
+
+
+</div>
+<div id="floatingtexto">
+
+</div>
+<table id="uppercontent">
+  <tr>
+    <td id="herotable">
+      <div class="progress">
+        <div id="hpbar" class="progress-bar progress-bar-success bartext" role="progressbar" aria-valuenow="100"
+        aria-valuemin="0" aria-valuemax="100" style="width:100%">
+          <div class="bartext" id="hitpoint">50/50</div>
+        </div>
+      </div>
+
+    </td>
+    <td id="enemytable">
+      <div class="progress">
+        <div id="mybar" class="progress-bar progress-bar-danger bartext" role="progressbar" aria-valuenow="100"
+        aria-valuemin="0" aria-valuemax="100" style="width:100%">
+          <div class="bartext" id="clife">10/10</div>
+        </div>
+      </div>
+
+    </td>
+  </tr>
+</table>
+
+
+</div></br>
+<div class="progress">
+  <div id="xpbar" class="progress-bar bartext" role="progressbar" aria-valuenow="100"
+  aria-valuemin="0" aria-valuemax="100" style="width:0%">
+    <div class="bartext" id="experience">0/10</div>
+  </div>
+</div>
+
+<div class="upgrades">
+ <table id="bottomtable">
+   <tr>
+     <td id="upgradetablecontainer">
+       <table id="upgradetable">
+<tr>
+<td class="descriptif">attack:</td>
+<td class="upvalue" id="atkvalue">1</td>
+<td class="buymore" id="buyatk" onclick="buyattack()"><span class="uparrow">^</span><br /><span id="costatck">10$</span></td>
+</tr>
+<tr>
+<td class="descriptif">speed:</td>
+<td class="upvalue" id="speedvalue">1</td>
+<td class="buymore" id="buyspeed" onclick="buyspeed()"><span class="uparrow">^</span><br /><span id="costspeed">10$</span></td>
+</tr>
+<tr>
+<td class="descriptif">Health:</td>
+<td class="upvalue" id="hpvalue">50</td>
+<td class="buymore" id="buyhp" onclick="buyhp()"><span class="uparrow">^</span><br /><span id="costhp">10$</span></td>
+</tr>
+<tr>
+<td class="descriptif">HP regen:</td>
+<td class="upvalue" id="hpsvalue">1</td>
+<td class="buymore" id="buyhps" onclick="buyhps()"><span class="uparrow">^</span><br /><span id="costhps">10$</span></td>
+</tr>
+<tr>
+<td class="descriptif">Armor:</td>
+<td class="upvalue" id="armorvalue">0</td>
+<td class="buymore" id="buyarmor" onclick="buyarmor()"><span class="uparrow">^</span><br /><span id="costarmor">10$</span></td>
+</tr>
+<tr>
+<td class="descriptif">Crit.Chance:</td>
+<td class="upvalue" id="ccvalue">5%</td>
+<td class="buymore" id="buycc" onclick="buycc()"><span class="uparrow">^</span><br /><span id="costcc">10$</span></td>
+</tr>
+<tr>
+<td class="descriptif">Crit.Dmg:</td>
+<td class="upvalue" id="cdvalue">50%</td>
+<td class="buymore" id="buycd" onclick="buycd()"><span class="uparrow">^</span><br /><span id="costcd">10$</span></td>
+</tr>
+</table>
+
+     </td>
+     <td id="equipment">
+       <span id="plvlinfo">
+          Hero Level 1
+       </span>
+       <div id="mygold">
+          0$
+       </div>
+
+     </td>
+     <td id="inventory">
+
+     </td>
+   </tr>
+ </table>
+
+</div>
+made by Emi Az
+
+
+    <script type="text/javascript" src="numeral.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+
+</body>
+
+</html>
