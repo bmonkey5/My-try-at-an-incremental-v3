@@ -1,22 +1,22 @@
 var plevel = 1;
 var hp = 50;
 var maxhp = 50;
-var maxhplevel = 1;
+var maxhplevel = 0;
 var hpregen = 0.1;
-var hpslevel = 1;
+var hpslevel = 0;
 var armor = 0;
-var armorlevel = 1;
+var armorlevel = 0;
 var crit = 5;
-var critlevel = 1;
+var critlevel = 0;
 var critdamage = 1.5;
-var critdamagelevel = 1;
+var critdamagelevel = 0;
 var currentlife = 10;
 var maxlife = 10;
 var speed = 1000;
-var speedlevel = 1;
+var speedlevel = 0;
 var pastespeed = 1;
 var attack = 1;
-var attacklevel = 1;
+var attacklevel = 0;
 var level = 1;
 var monsterattack = 1;
 var xp = 0;
@@ -94,7 +94,7 @@ function xpfunction(){
 //deals with gold
 function goldfunction(){
    var levelm = Math.pow(1.2, level-1);
-   var gainedgold = 2 * levelm;
+   var gainedgold = 10 * levelm;
    gold = gold + gainedgold;
    document.getElementById("mygold").innerHTML = numeral(gold).format('($ 0.0 a)');
 };
@@ -229,7 +229,7 @@ function buyspeed() {
     var costCat = Math.floor(10 * Math.pow(1.3, speedlevel));
     if (gold >= costCat) {
 
-        speed = speed / 1.1;
+        speed = speed * 0.9;
         pastespeed = pastespeed * 1.1;
         gold = gold - costCat;
         speedlevel = speedlevel + 1;
@@ -245,7 +245,7 @@ function buyarmor() {
     var costCat = Math.floor(10 * Math.pow(1.3, armorlevel));
     if (gold >= costCat) {
 
-        armor = armor + 5;
+        armor = armor + 1;
         gold = gold - costCat;
         armorlevel = armorlevel + 1;
         document.getElementById("mygold").innerHTML = numeral(gold).format('($ 0.0 a)');
