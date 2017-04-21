@@ -25,127 +25,175 @@ var maxxp = 10;
 var elem = document.getElementById("mybar");
 var hpbar = document.getElementById("hpbar");
 var xpbar = document.getElementById("xpbar");
+var ss = speed;
 
 $('#previouslevel').hide();
 
 //attack enemy function
+var playerattack = function() {
+    var timer = setInterval(function() {
+            var criticalstrikecalc = Math.floor(Math.random() * 100);
+            if (hp < 0) {
+                clearInterval(timer);
+                deathstate();
+            } else if (currentlife <= 0) {
+                xpfunction();
+                goldfunction();
+                currentlife = maxlife;
+                clearInterval(timer);
+                playerattack();
+            } else if (criticalstrikecalc <= crit) {
+                var criticalstrike = attack * critdamage;
+                currentlife = currentlife - criticalstrike;
+                FloatingText(criticalstrike);
+                var pastelife = (100 * currentlife) / maxlife;
+                var elem = document.getElementById("mybar");
+                elem.style.width = pastelife + '%';
+                elem.innerHTML = currentlife.toFixed(1) + '/' + maxlife.toFixed(1);
+                clearInterval(timer);
+                playerattack();
+
+            } else if (hp >= 1) {
+                currentlife = currentlife - attack;
+                FloatingText(attack);
+                //transforms value into % for paste//
+                var pastelife = (100 * currentlife) / maxlife;
+                var elem = document.getElementById("mybar");
+                elem.style.width = pastelife + '%';
+                elem.innerHTML = currentlife.toFixed(1) + '/' + maxlife.toFixed(1);
+
+
+
+
+                clearInterval(timer);
+                playerattack();
+            }
+        },
+        speed);
+}
+playerattack();
+
 window.setInterval(function() {
-      var criticalstrikecalc = Math.floor( Math.random() * 100 );
-      if (hp < 1){
-        hpregeneration();
-      }
-      else if (currentlife <= 0) {
-        xpfunction();
-        goldfunction();
-        currentlife = maxlife;
-      }
-      else if (criticalstrikecalc <= crit){
-        var criticalstrike = attack * critdamage;
-        currentlife = currentlife - criticalstrike;
-        FloatingText(criticalstrike);
-        var pastelife = (100*currentlife)/maxlife;
-        var elem = document.getElementById("mybar");
-        elem.style.width = pastelife + '%';
-        elem.innerHTML = currentlife.toFixed(1) + '/' + maxlife.toFixed(1);
+    ss = speed;
+}, 100);
 
-      }
-      else currentlife = currentlife - attack;
-      FloatingText(attack);
-      //transforms value into % for paste//
-      var pastelife = (100*currentlife)/maxlife;
-      var elem = document.getElementById("mybar");
-      elem.style.width = pastelife + '%';
-      elem.innerHTML = currentlife.toFixed(1) + '/' + maxlife.toFixed(1);
 
-}, speed);
 
 //hpregen function
-function hpregeneration(){
+function hpregeneration() {
 
- if(hp < maxhp){
-   hp = hp + hpregen;
-      //transforms value into % for paste//
-      var pastelife = (100*hp)/maxhp;
-      hpbar.style.width = pastelife + '%';
-      hpbar.innerHTML = hp.toFixed(1) + '/' + maxhp.toFixed(1);
-}
+    if (hp < maxhp) {
+        hp = hp + hpregen;
+        //transforms value into % for paste//
+        var pastelife = (100 * hp) / maxhp;
+        hpbar.style.width = pastelife + '%';
+        hpbar.innerHTML = hp.toFixed(1) + '/' + maxhp.toFixed(1);
+    }
 
 };
 
-window.setInterval(function(){
-  hpregeneration();
-},100);
+window.setInterval(function() {
+    hpregeneration();
+}, 100);
 
 //deals with adds, update and scale experience
-function xpfunction(){
-  xp = xp + level;
-  var pastexp = (100*xp)/maxxp;
-  xpbar.style.width = pastexp + '%';
-  xpbar.innerHTML = xp.toFixed(1) + '/' + maxxp.toFixed(1);
+function xpfunction() {
+    xp = xp + level;
+    var pastexp = (100 * xp) / maxxp;
+    xpbar.style.width = pastexp + '%';
+    xpbar.innerHTML = xp.toFixed(1) + '/' + maxxp.toFixed(1);
 
-  if (xp >= maxxp){
-    xp = xp-xp;
-    maxxp = maxxp * 2;
-    plevel = plevel + 1;
-    document.getElementById("plvlinfo").innerHTML = 'Hero Level ' + plevel;
-  }
+    if (xp >= maxxp) {
+        xp = xp - xp;
+        maxxp = maxxp * 2;
+        plevel = plevel + 1;
+        document.getElementById("plvlinfo").innerHTML = 'Hero Level ' + plevel;
+    }
 };
 
 //deals with gold
-function goldfunction(){
-   var levelm = Math.pow(1.2, level-1);
-   var gainedgold = 10 * levelm;
-   gold = gold + gainedgold;
-   document.getElementById("mygold").innerHTML = numeral(gold).format('($ 0.0 a)');
+function goldfunction() {
+    var levelm = Math.pow(1.2, level - 1);
+    var gainedgold = 10 * levelm;
+    gold = gold + gainedgold;
+    document.getElementById("mygold").innerHTML = numeral(gold).format('($ 0.0 a)');
 };
 
 //enemyattacks
-window.setInterval(function() {
-  if (hp < 1){
-    hpregeneration();
-  }
-  else if(currentlife>0){
-    var monsterdamage = monsterattack - armor;
-     hp = hp - monsterdamage;
-      //transforms value into % for paste//
-      var pastelife = (100*hp)/maxhp;
-      hpbar.style.width = pastelife + '%';
-      hpbar.innerHTML = hp.toFixed(1) + '/' + maxhp.toFixed(1);
+var eattack = function() {
+    var timer = setInterval(function() {
+            if (hp <= 0) {
+                clearInterval(timer);
+            } else if (currentlife > 0) {
+                var monsterdamage = monsterattack - armor;
+                if (monsterdamage < 0) {
+                    monsterdamage = 0;
+                }
+                hp = hp - monsterdamage;
+                //transforms value into % for paste//
+                var pastelife = (100 * hp) / maxhp;
+                hpbar.style.width = pastelife + '%';
+                hpbar.innerHTML = hp.toFixed(1) + '/' + maxhp.toFixed(1);
+
+
+
+                clearInterval(timer);
+                eattack();
+            }
+        },
+        1000);
 }
-}, 1000);
+eattack();
 
-function calclevel(input){
-  input*levelm;
+//death state
+var deathstate = function() {
+    var death = setInterval(function() {
+            if (hp < maxhp) {
+                hpregeneration();
+            } else if (hp >= maxhp) {
+                clearInterval(death);
+                eattack();
+                playerattack();
+            }
+
+
+        },
+        50);
+}
+
+
+function calclevel(input) {
+    input * levelm;
 };
 
-function goNextLevel(){
-  level = level + 1;
-  var levelm = Math.pow(1.2, level-1);
-  maxlife = 10 * levelm;
-  monsterattack = 1 * levelm;
-  currentlife = maxlife;
-  var pastelife = (100*currentlife)/maxlife;
-  elem.style.width = pastelife + '%';
-  elem.innerHTML = currentlife.toFixed(1) + '/' + maxlife.toFixed(1);
-  document.getElementById('levels').innerHTML = level.toString();
-  if (level > 1){
-    $('#previouslevel').show();
-  };
+function goNextLevel() {
+    level = level + 1;
+    var levelm = Math.pow(1.2, level - 1);
+    maxlife = 10 * levelm;
+    monsterattack = 1 * levelm;
+    currentlife = maxlife;
+    var pastelife = (100 * currentlife) / maxlife;
+    elem.style.width = pastelife + '%';
+    elem.innerHTML = currentlife.toFixed(1) + '/' + maxlife.toFixed(1);
+    document.getElementById('levels').innerHTML = level.toString();
+    if (level > 1) {
+        $('#previouslevel').show();
+    };
 };
 
-function goPreviousLevel(){
-  level = level - 1;
-  var levelm = Math.pow(1.2, level-1);
-  maxlife = 10 * levelm;
-  monsterattack = 1*levelm;
-  currentlife = maxlife;
-  var pastelife = (100*currentlife)/maxlife;
-  elem.style.width = pastelife + '%';
-  elem.innerHTML = currentlife.toFixed(1) + '/' + maxlife.toFixed(1);
-  document.getElementById('levels').innerHTML = level.toString();
-  if (level < 2){
-    $('#previouslevel').hide();
-  };
+function goPreviousLevel() {
+    level = level - 1;
+    var levelm = Math.pow(1.2, level - 1);
+    maxlife = 10 * levelm;
+    monsterattack = 1 * levelm;
+    currentlife = maxlife;
+    var pastelife = (100 * currentlife) / maxlife;
+    elem.style.width = pastelife + '%';
+    elem.innerHTML = currentlife.toFixed(1) + '/' + maxlife.toFixed(1);
+    document.getElementById('levels').innerHTML = level.toString();
+    if (level < 2) {
+        $('#previouslevel').hide();
+    };
 };
 
 function FloatingText(attack) {
@@ -228,7 +276,6 @@ function buyhps() {
 function buyspeed() {
     var costCat = Math.floor(10 * Math.pow(1.3, speedlevel));
     if (gold >= costCat) {
-
         speed = speed * 0.9;
         pastespeed = pastespeed * 1.1;
         gold = gold - costCat;
