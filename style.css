@@ -177,6 +177,26 @@ body {
   table-layout: fixed;
 }
 
+#inventorygrid {
+  table-layout: fixed;
+  margin-left: 10%;
+  border-spacing: 5px;
+  border-collapse: separate;
+}
+
+.gridcell {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+#inventory {
+  text-align: center;
+}
+
 #upgradetable {
   table-layout: fixed;
   height: 90%;
