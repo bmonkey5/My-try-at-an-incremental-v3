@@ -7,6 +7,7 @@
     <script type="text/javascript" src="jquery\jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="numeral.js"></script>
 
+
 </head>
 
 <body>
@@ -24,12 +25,22 @@
 
 
 </div>
+
+
+
+
 <div id="floatingtexto">
 
 </div>
 <table id="uppercontent">
   <tr>
     <td id="herotable">
+      <img id="herocat" src="caticon6.gif">
+
+    </img><br />
+
+
+
       <div class="progress">
         <div id="hpbar" class="progress-bar progress-bar-success bartext" role="progressbar" aria-valuenow="100"
         aria-valuemin="0" aria-valuemax="100" style="width:100%">
@@ -39,6 +50,13 @@
 
     </td>
     <td id="enemytable">
+      <img id="concombre" src="placeholders/finallboss.png">
+
+    </img><br />
+
+
+
+
       <div class="progress">
         <div id="mybar" class="progress-bar progress-bar-danger bartext" role="progressbar" aria-valuenow="100"
         aria-valuemin="0" aria-valuemax="100" style="width:100%">
@@ -67,36 +85,43 @@
 <tr>
 <td class="descriptif">attack:</td>
 <td class="upvalue" id="atkvalue">1</td>
+<td class="pourcentage" id="pourcentAttack">+0% </td>
 <td class="buymore" id="buyatk" onclick="buyattack()"><span class="uparrow">^</span><br /><span id="costatck">10$</span></td>
 </tr>
 <tr>
 <td class="descriptif">speed:</td>
 <td class="upvalue" id="speedvalue">1</td>
+<td class="pourcentage" id="pourcentSpeed">+0% </td>
 <td class="buymore" id="buyspeed" onclick="buyspeed()"><span class="uparrow">^</span><br /><span id="costspeed">10$</span></td>
 </tr>
 <tr>
 <td class="descriptif">Health:</td>
 <td class="upvalue" id="hpvalue">50</td>
+<td class="pourcentage" id="pourcentHP">+0% </td>
 <td class="buymore" id="buyhp" onclick="buyhp()"><span class="uparrow">^</span><br /><span id="costhp">10$</span></td>
 </tr>
 <tr>
 <td class="descriptif">HP regen:</td>
 <td class="upvalue" id="hpsvalue">1</td>
+<td class="pourcentage" id="pourcentHPS">+0% </td>
 <td class="buymore" id="buyhps" onclick="buyhps()"><span class="uparrow">^</span><br /><span id="costhps">10$</span></td>
 </tr>
 <tr>
 <td class="descriptif">Armor:</td>
 <td class="upvalue" id="armorvalue">0</td>
+<td class="pourcentage" id="pourcentArmor">+0% </td>
 <td class="buymore" id="buyarmor" onclick="buyarmor()"><span class="uparrow">^</span><br /><span id="costarmor">10$</span></td>
 </tr>
 <tr>
 <td class="descriptif">Crit.Chance:</td>
 <td class="upvalue" id="ccvalue">5%</td>
+<td class="pourcentage" id="pourcentCC">+0% </td>
 <td class="buymore" id="buycc" onclick="buycc()"><span class="uparrow">^</span><br /><span id="costcc">10$</span></td>
 </tr>
 <tr>
 <td class="descriptif">Crit.Dmg:</td>
 <td class="upvalue" id="cdvalue">50%</td>
+<td class="pourcentage" id="pourcentCD">+0% </td>
 <td class="buymore" id="buycd" onclick="buycd()"><span class="uparrow">^</span><br /><span id="costcd">10$</span></td>
 </tr>
 </table>
@@ -109,36 +134,55 @@
        <div id="mygold">
           0$
        </div>
+       <table id="equippeditems">
+
+<tr>
+<td class="equippeditems" id="upperleft"> </td>
+<td class="equippeditems" id="uppermiddle"><div id="equippedhead">  </div> </td>
+<td class="equippeditems" id="upperright"> </td>
+</tr>
+<tr>
+<td class="equippeditems" id="centerleft"><div id="equippedsword">  </div> </td>
+<td class="equippeditems" id="centermiddle"><div id="equippedchest">  </div> </td>
+<td class="equippeditems" id="centerright"><div id="equippedgloves" style="float: left;">  </div> </td>
+</tr>
+<tr>
+<td class="equippeditems" id="lowerleft"> </td>
+<td class="equippeditems" id="lowermiddle"><div id="equippedboots">  </div> </td>
+<td class="equippeditems" id="lowerright"> </td>
+</tr>
+
+</table>
 
      </td>
      <td id="inventory">
        <table id="inventorygrid">
 <tr>
-<td class="gridcell" id="cell1">&nbsp;</td>
-<td class="gridcell" id="cell2">&nbsp;</td>
-<td class="gridcell" id="cell3">&nbsp;</td>
-<td class="gridcell" id="cell4">&nbsp;</td>
+<div class="gridcell empty" id="cell1"></div>
+<div class="gridcell empty" id="cell2"></div>
+<div class="gridcell empty" id="cell3"></div>
+<div class="gridcell empty" id="cell4"></div>
 </tr>
 <tr>
-<td class="gridcell" id="cell5">&nbsp;</td>
-<td class="gridcell" id="cell6">&nbsp;</td>
-<td class="gridcell" id="cell7">&nbsp;</td>
-<td class="gridcell" id="cell8">&nbsp;</td>
+<div class="gridcell empty" id="cell5"></div>
+<div class="gridcell empty" id="cell6"></div>
+<div class="gridcell empty" id="cell7"></div>
+<div class="gridcell empty" id="cell8"></div>
 </tr>
 <tr>
-<td class="gridcell" id="cell9">&nbsp;</td>
-<td class="gridcell" id="cell10">&nbsp;</td>
-<td class="gridcell" id="cell11">&nbsp;</td>
-<td class="gridcell" id="cell12">&nbsp;</td>
+<div class="gridcell empty" id="cell9"></div>
+<div class="gridcell empty" id="cell10"></div>
+<div class="gridcell empty" id="cell11"></div>
+<div class="gridcell empty" id="cell12"></div>
 </tr>
 <tr>
-<td class="gridcell" id="cell13">&nbsp;</td>
-<td class="gridcell" id="cell14">&nbsp;</td>
-<td class="gridcell" id="cell15">&nbsp;</td>
-<td class="gridcell" id="cell16">&nbsp;</td>
+<div class="gridcell empty" id="cell13"></div>
+<div class="gridcell empty" id="cell14"></div>
+<div class="gridcell empty" id="cell15"></div>
+<div class="gridcell empty" id="cell16"></div>
 </tr>
 </table>
-
+<button id="trashitems" onclick="trashItems()">Trash Items</button>
      </td>
    </tr>
  </table>
@@ -146,9 +190,9 @@
 </div>
 <button onclick="save()">save</button> <button onclick="load()">load</button>
 
-
     <script type="text/javascript" src="numeral.js"></script>
     <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="inventory.js"></script>
    <script type="text/javascript" src="loadtest.js"></script>
 
 </body>

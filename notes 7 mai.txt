@@ -1,10 +1,13 @@
--google how to copy an object for new item
+X google how to copy an object for new item
 
--make a function to check which html div is empty to know where to spawn item
+- make a function to check which html div is empty to know where to spawn item
 
--google how to take a random word from an array
+X google how to take a random word from an array
 
--be able to add an item to the UI with tooltips with stats by adding css class
+- be able to add an item to the UI with tooltips with stats by adding css class
 
--check how to be able to select 1 or multiple affixes randomly, choose randomly from an object property, then add value to them
+X check how to be able to select 1 or multiple affixes randomly, choose randomly from an object property, then add value to them
 depending on levelm and spawnitemrarity();
+
+- use json and jparse on item generated so it's easier to revert bonuses when unequipped
+

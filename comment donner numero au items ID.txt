@@ -1,0 +1,4 @@
+Le nombre de place qu'il reste est un variable general. 
+
+Chaque fois qu'un item spawn, check la variable qui dit ex "reste 3 spot left". donne le nombre  max-spot left. donc item qui spawn
+spot 13, reste 3 spot left donc 16-3 = item id 13.

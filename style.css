@@ -77,12 +77,15 @@ body {
 .upvalue {
   background-color: rgb(224, 224, 224);
   color: black;
-  font-size: 22px;
+  font-size: 16px;
   font: verdana;
-  width: 100px;
-  height: 50px;
   padding: 10px;
   text-align: center;
+}
+
+.pourcentage {
+  text-align: center;
+  width: 50px;
 }
 
 #equipment{
@@ -98,10 +101,9 @@ body {
 .descriptif{
   background-color: rgb(224, 224, 224);
   color: black;
-  font-size: 16px;
+  font-size: 14px;
+  font-size: 0.6vw;
   font: verdana;
-  width: 100px;
-  height: 50px;
   padding: 10px;
   text-align: center;
 }
@@ -113,17 +115,16 @@ body {
 .buymore {
   background-color: darkgrey;
   font: verdana;
-  width: 50px;
-  height: 50px;
   text-align: center;
   color: white;
   line-height: 50%;
+  width: 50px;
   vertical-align: bottom;
   padding-bottom: 0.6em;
 }
 
 .uparrow {
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .buymore:hover{
@@ -184,6 +185,39 @@ body {
   border-collapse: separate;
 }
 
+#equippeditems {
+  table-layout: fixed;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#equippedhead, #equippedsword, #equippedchest, #equippedgloves, #equippedboots {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 50px;
+  height: 50px;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.3);
+  margin:auto;
+}
+
+#centerleft, #centermiddle, #lowermiddle {
+  vertical-align: middle;
+  text-align: center;
+}
+
+#uppermiddle, #centerright {
+  vertical-align: bottom;
+}
+
+#centerright{
+
+}
+
+.equippeditems {
+  width: 83px;
+  height: 85px;
+}
+
 .gridcell {
   background-color: rgba(0, 0, 0, 0.2);
   width: 50px;
@@ -191,7 +225,39 @@ body {
   margin: 5px;
   border: 1px solid;
   border-color: rgba(0, 0, 0, 0.3);
+  display: inline-block;
 }
+
+.gridcell .tooltip {
+  opacity: 0;
+  position: fixed;
+  color: white;
+  background-color: rgba(0,0,0,.8);
+  font-size: 11px;
+
+}
+
+p {
+}
+
+.gridcell:hover .tooltip {
+  opacity: 1;
+  float: right;
+}
+
+.tooltip {
+  position: absolute;
+  left: 100px;
+  opacity: 0.6;
+
+}
+
+.itemName {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
 
 #inventory {
   text-align: center;
@@ -212,4 +278,53 @@ body {
 #enemytable {
   padding-bottom: 1.2em;
  vertical-align: bottom;
+}
+
+#herocat {
+  height: 66px;
+  width: 67px;
+  margin: auto;
+  display: block;
+}
+
+#concombre {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  display: block;
+}
+
+.normalItem {
+  border : 2px solid grey;
+}
+
+.uncommonItem {
+  border : 2px solid;
+  border-color: rgb(0, 153, 0);
+  background-color: rgba(0, 153, 0, 0.5);
+}
+
+.rareItem {
+  border: 2px solid blue;
+  background-color: rgba(0, 0, 255, 0.5);
+}
+
+.legArmor {
+  background-image: url('placeholders/boots.png');
+}
+
+.chestArmor {
+  background-image: url('placeholders/chest.png');
+}
+
+.gloveArmor {
+  background-image: url('placeholders/gloves.png');
+}
+
+.helmArmor {
+  background-image: url('placeholders/helm.png');
+}
+
+.weaponArmor {
+  background-image: url('placeholders/weapon.png');
 }
